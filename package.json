@@ -12,7 +12,7 @@
       "email": "matthias.wagler@thenativeweb.io"
     }
   ],
-  "main": "lib/http.js",
+  "main": "http.js",
   "dependencies": {},
   "devDependencies": {
     "assertthat": "0.6.0",
