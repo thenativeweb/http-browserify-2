@@ -19,7 +19,7 @@ First you need to register http-browserify-2 as a replacement to the `http` and 
 }
 ```
 
-Then you may use it in the same way as the aforementioned modules. Currently, the only function supported is `request`.
+Then you may use it in the same way as the aforementioned modules. Currently, the functions [`request`](https://nodejs.org/api/http.html#http_http_request_options_callback) and [`get`](https://nodejs.org/api/http.html#http_http_get_options_callback) are implemented.
 
 ```javascript
 var req = http.request({
@@ -33,6 +33,8 @@ var req = http.request({
 
 req.end();
 ```
+
+For further details on how to use these functions see their documentation.
 
 ## Running the build
 

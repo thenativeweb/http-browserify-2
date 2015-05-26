@@ -15,6 +15,7 @@ module.exports = tourism({
     server: [ 'test/**/*.js' ]
   },
   shell: {
-    'test-browser': 'zuul --ui mocha-tdd --local 8080 --open -- test/requestTests.js'
+    'test-browser': 'zuul --ui mocha-tdd --local 8080 --tunnel --open -- test/requestTests.js',
+    'test-browsers': 'zuul -- test/requestTests.js'
   }
 });
