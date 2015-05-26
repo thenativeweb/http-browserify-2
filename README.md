@@ -36,6 +36,18 @@ req.end();
 
 For further details on how to use these functions see their documentation.
 
+### Supported browsers
+
+The module was successfully tested with the help of [zuul](https://github.com/defunctzombie/zuul) and [Sauce Labs](https://saucelabs.com/) in the following browsers:
+
+- Chrome 43
+- Firefox 37
+- Safari 8
+- Internet Explorer 10
+- Internet Explorer 11
+- iOS 8.2
+- Android 5.1
+
 ## Running the build
 
 This module can be built using [Grunt](http://gruntjs.com/). Besides running the tests, this also analyses the code. To run Grunt, go to the folder where you have installed http-browserify-2 and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
