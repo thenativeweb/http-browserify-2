@@ -8,7 +8,30 @@ http-browserify-2 is an alternative for http-browserify.
 
 ## Quick start
 
-[...]
+First you need to register http-browserify-2 as a replacement to the `http` and `https` modules in your application's `package.json` file.
+
+```json
+{
+  "browser": {
+    "http": "http-browserify-2"
+  }
+}
+```
+
+Then you may use it in the same way as the aforementioned modules. Currently, the only function supported is `request`.
+
+```javascript
+var req = http.request({
+  method: 'GET',
+  hostname: 'www.thenativeweb.io',
+  port: 80,
+  path: '/'
+}, function (res) {
+  // Use the response stream and its properties, such as statusCode.
+});
+
+req.end();
+```
 
 ## Running the build
 
