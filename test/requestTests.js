@@ -73,6 +73,32 @@ suite('request', function () {
         req.end();
       });
 
+      test('accepts query strings.', function (done) {
+        var req;
+
+        req = http.request({
+          method: 'GET',
+          hostname: 'www.thenativeweb.io',
+          port: 80,
+          path: '/?_=82517'
+        }, function (res) {
+          var content = '';
+
+          assert.that(res.statusCode).is.equalTo(200);
+
+          res.on('data', function (data) {
+            content += data.toString('utf8');
+          });
+
+          res.once('end', function () {
+            assert.that(content.indexOf('the native web')).is.not.equalTo(-1);
+            res.removeAllListeners();
+            done();
+          });
+        });
+        req.end();
+      });
+
       test('returns a 404 if the requested path could not be found.', function (done) {
         var req;
 
