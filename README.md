@@ -13,7 +13,8 @@ First you need to register http-browserify-2 as a replacement to the `http` and 
 ```json
 {
   "browser": {
-    "http": "http-browserify-2"
+    "http": "http-browserify-2",
+    "https": "http-browserify-2"
   }
 }
 ```
