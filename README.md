@@ -34,7 +34,7 @@ var req = http.request({
 req.end();
 ```
 
-Additionally, you can access the `STATUS_CODES` property to get a map of status codes to human readable messages.
+Additionally, you can access the [`STATUS_CODES`](https://nodejs.org/api/http.html#http_http_status_codes) property to get a map of status codes to human readable messages.
 
 ```javascript
 console.log(http.STATUS_CODES[200]); // => 'OK'
