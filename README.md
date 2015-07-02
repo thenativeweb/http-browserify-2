@@ -50,9 +50,19 @@ The module was successfully tested with the help of [zuul](https://github.com/de
 
 ## Running the build
 
-This module can be built using [Grunt](http://gruntjs.com/). Besides running the tests, this also analyses the code. To run Grunt, go to the folder where you have installed http-browserify-2 and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
+Testing requires [zuul](https://www.npmjs.com/package/zuul) and [Grunt](http://gruntjs.com/). You can install them as follows:
 
-    $ grunt
+    $ npm install -g grunt-cli
+    $ npm install -g zuul
+
+The test suite is run via `grunt shell`:
+
+    $ grunt shell
+
+Other build targets include
+
+    $ grunt analyse      # Lints the code
+    $ grunt              # Lints the code and runs the test
 
 ## License
 
