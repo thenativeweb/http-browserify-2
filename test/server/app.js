@@ -1,3 +1,4 @@
+/*eslint-disable no-console */
 'use strict';
 
 var http = require('http');
@@ -31,7 +32,9 @@ app.post('/with-body', function (req, res) {
 
 app.post('/streaming', jsonLines(function (client) {
   client.once('connect', function () {
-    for (var i = 0; i < 1000; i++) {
+    var i;
+
+    for (i = 0; i < 1000; i++) {
       client.send({ counter: i });
     }
     client.disconnect();
