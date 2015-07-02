@@ -1,12 +1,12 @@
-/* globals location */
 'use strict';
+
+/* eslint-env browser, mocha */
 
 var url = require('url');
 
 var assert = require('assertthat');
 
-var http = require('../lib/request')('http'),
-    https = require('../lib/request')('https');
+var https = require('../lib/request')('https');
 
 var getLocationOrigin = function () {
   if (!location.origin) {

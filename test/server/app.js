@@ -31,16 +31,14 @@ app.post('/with-body', function (req, res) {
 });
 
 app.post('/streaming', jsonLines(function (client) {
-  var onConnect = function () {
+  client.once('connect', function () {
     var i;
 
     for (i = 0; i < 1000; i++) {
       client.send({ counter: i });
     }
     client.disconnect();
-  };
-
-  client.once('connect', onConnect);
+  });
 }));
 
 http.createServer(app).listen(port, function () {
