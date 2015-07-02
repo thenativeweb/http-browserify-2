@@ -6,8 +6,8 @@ var url = require('url');
 
 var assert = require('assertthat');
 
-var https = require('../https');
-var http = require('../http');
+var http = require('../http'),
+    https = require('../https');
 
 var getLocationOrigin = function () {
   if (!location.origin) {
