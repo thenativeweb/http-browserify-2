@@ -6,7 +6,8 @@ var url = require('url');
 
 var assert = require('assertthat');
 
-var https = require('../lib/request')('https');
+var http = require('../http'),
+    https = require('../https');
 
 var getLocationOrigin = function () {
   if (!location.origin) {
@@ -20,6 +21,13 @@ var server = url.parse(serverUrl);
 
 suite('request', function () {
   this.timeout(10 * 1000);
+
+  suite('http', function () {
+    test('has status codes', function (done) {
+      assert.that(http.STATUS_CODES[200]).is.equalTo('OK');
+      done();
+    });
+  });
 
   suite('https', function () {
     test('is an object.', function (done) {
