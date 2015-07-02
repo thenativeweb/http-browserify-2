@@ -5,6 +5,7 @@ var url = require('url');
 var assert = require('assertthat');
 
 var https = require('../lib/request')('https');
+var http = require('../lib/request')('http');
 
 var getLocationOrigin = function () {
   if (!location.origin) {
@@ -267,7 +268,7 @@ suite('request', function () {
       req.end();
     });
 
-    test('emits an error if the host could not be resolved.', function (done) {
+    test('request emits an error if the host could not be resolved.', function (done) {
       var req;
 
       req = https.request('https://localhorst:8080');
@@ -278,6 +279,18 @@ suite('request', function () {
       });
 
       req.end();
+    });
+
+    test('get emits an error if the host could not be resolved.', function (done) {
+      var req;
+
+      req = https.get('https://localhorst:8080');
+
+      req.once('error', function (err) {
+        assert.that(err).is.not.null();
+        done();
+      });
+
     });
   });
 });
