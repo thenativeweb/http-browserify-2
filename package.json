@@ -10,6 +10,10 @@
     {
       "name": "Matthias Wagler",
       "email": "matthias.wagler@thenativeweb.io"
+    },
+    {
+      "name": "James Talmage",
+      "email": "james@talmage.io"
     }
   ],
   "main": "http.js",
