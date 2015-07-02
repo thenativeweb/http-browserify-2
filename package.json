@@ -20,12 +20,12 @@
   "dependencies": {},
   "devDependencies": {
     "assertthat": "0.6.0",
-    "body-parser": "1.12.4",
-    "express": "4.12.4",
+    "body-parser": "1.13.1",
+    "express": "4.13.0",
     "grunt": "0.4.5",
     "json-lines": "0.3.0",
     "processenv": "0.1.0",
-    "tourism": "0.19.0"
+    "tourism": "0.20.1"
   },
   "repository": {
     "type": "git",

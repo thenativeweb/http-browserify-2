@@ -1,4 +1,3 @@
-/*eslint-disable no-console */
 'use strict';
 
 var http = require('http');
@@ -42,5 +41,7 @@ app.post('/streaming', jsonLines(function (client) {
 }));
 
 http.createServer(app).listen(port, function () {
+  /* eslint-disable no-console */
   console.log('Server running on port ' + port);
+  /* eslint-enable no-console */
 });
