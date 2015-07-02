@@ -50,9 +50,17 @@ The module was successfully tested with the help of [zuul](https://github.com/de
 
 ## Running the build
 
-This module can be built using [Grunt](http://gruntjs.com/). Besides running the tests, this also analyses the code. To run Grunt, go to the folder where you have installed http-browserify-2 and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
+This module can be built using [Grunt](http://gruntjs.com/). Besides running the unit tests, this also analyses the code. To run Grunt, go to the folder where you have installed http-browserify-2 and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
 
-    $ grunt
+Additionally, you can run integration tests. For this, additionally to Grunt you need [zuul](https://www.npmjs.com/package/zuul). Then you can run the integration tests.
+
+    $ grunt test-browser
+
+If you want to run the integration tests on multiple browsers, use the `test-browsers` task.
+
+    $ grunt test-browsers
+
+Please note that for this you need a [Sauce Labs](https://saucelabs.com/) account. Additionally, you need to [configure zuul](https://github.com/defunctzombie/zuul/wiki/Cloud-testing) to be able to access the account automatically.
 
 ## License
 
