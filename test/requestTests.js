@@ -4,8 +4,8 @@ var url = require('url');
 
 var assert = require('assertthat');
 
-var https = require('../lib/request')('https');
-var http = require('../lib/request')('http');
+var http = require('../lib/request')('http'),
+    https = require('../lib/request')('https');
 
 var getLocationOrigin = function () {
   if (!location.origin) {
@@ -268,29 +268,32 @@ suite('request', function () {
       req.end();
     });
 
-    test('request emits an error if the host could not be resolved.', function (done) {
-      var req;
+    suite('request', function () {
+      test('emits an error if the host could not be resolved.', function (done) {
+        var req;
 
-      req = https.request('https://localhorst:8080');
+        req = https.request('https://localhorst:8080');
 
-      req.once('error', function (err) {
-        assert.that(err).is.not.null();
-        done();
+        req.once('error', function (err) {
+          assert.that(err).is.not.null();
+          done();
+        });
+
+        req.end();
       });
-
-      req.end();
     });
 
-    test('get emits an error if the host could not be resolved.', function (done) {
-      var req;
+    suite('get', function () {
+      test('emits an error if the host could not be resolved.', function (done) {
+        var req;
 
-      req = https.get('https://localhorst:8080');
+        req = https.get('https://localhorst:8080');
 
-      req.once('error', function (err) {
-        assert.that(err).is.not.null();
-        done();
+        req.once('error', function (err) {
+          assert.that(err).is.not.null();
+          done();
+        });
       });
-
     });
   });
 });
