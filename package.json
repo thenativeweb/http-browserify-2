@@ -18,7 +18,7 @@
   ],
   "main": "http.js",
   "dependencies": {
-    "builtin-status-codes": "^1.0.0"
+    "builtin-status-codes": "1.0.0"
   },
   "devDependencies": {
     "assertthat": "0.6.0",
