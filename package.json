@@ -17,7 +17,9 @@
     }
   ],
   "main": "http.js",
-  "dependencies": {},
+  "dependencies": {
+    "builtin-status-codes": "1.0.0"
+  },
   "devDependencies": {
     "assertthat": "0.6.0",
     "body-parser": "1.13.1",
