@@ -4,6 +4,7 @@
 
 # Build artefacts
 *build/
+dist-test/
 
 # OS generated files and folders
 .DS_Store

@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/request')('https');
+module.exports = require('./dist/request')('https');

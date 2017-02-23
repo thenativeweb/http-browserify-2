@@ -1,27 +1,29 @@
 'use strict';
 
-const stream = require('stream'),
-      url = require('url');
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-const parseResponseHeaders = require('./parseResponseHeaders');
+var stream = require('stream'),
+    url = require('url');
 
-const PassThrough = stream.PassThrough;
+var parseResponseHeaders = require('./parseResponseHeaders');
 
-const xhrStatus = {
+var PassThrough = stream.PassThrough;
+
+var xhrStatus = {
   headersReceived: 2,
   loading: 3,
   done: 4
 };
 
-const setupRequest = function (protocol) {
-  const http = {};
+var setupRequest = function setupRequest(protocol) {
+  var http = {};
 
   http.get = function (options, callback) {
-    if (typeof options === 'object') {
+    if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object') {
       options.method = 'GET';
     }
 
-    const req = http.request(options, callback);
+    var req = http.request(options, callback);
 
     req.end();
 
@@ -29,14 +31,14 @@ const setupRequest = function (protocol) {
   };
 
   http.request = function (options, callback) {
-    let reqMethod,
-        reqUrl;
+    var reqMethod = void 0,
+        reqUrl = void 0;
 
     if (!options) {
       throw new Error('Options are missing.');
     }
 
-    if (typeof options === 'object') {
+    if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object') {
       options.path = options.path || '/';
 
       options.protocol = protocol;
@@ -52,25 +54,25 @@ const setupRequest = function (protocol) {
       reqUrl = options;
     }
 
-    const req = new PassThrough(),
-          res = new PassThrough();
+    var req = new PassThrough(),
+        res = new PassThrough();
 
-    let reqData = '';
+    var reqData = '';
 
-    req.on('data', data => {
+    req.on('data', function (data) {
       reqData += data.toString('utf8');
     });
 
-    req.once('finish', () => {
+    req.once('finish', function () {
       /* eslint-disable no-undef */
-      const xhr = new XMLHttpRequest();
+      var xhr = new XMLHttpRequest();
       /* eslint-enable no-undef */
 
-      let bytesHandled = 0;
+      var bytesHandled = 0;
 
-      const handleProgress = function () {
-        const chunks = xhr.responseText,
-              newChunk = chunks.substr(bytesHandled);
+      var handleProgress = function handleProgress() {
+        var chunks = xhr.responseText,
+            newChunk = chunks.substr(bytesHandled);
 
         if (newChunk) {
           res.write(newChunk);
@@ -79,7 +81,7 @@ const setupRequest = function (protocol) {
         bytesHandled = chunks.length;
       };
 
-      const setResHeaders = function () {
+      var setResHeaders = function setResHeaders() {
         try {
           if (res.headers) {
             return;
@@ -114,14 +116,14 @@ const setupRequest = function (protocol) {
       };
 
       xhr.onreadystatechange = function () {
-        if ((xhr.readyState === xhrStatus.headersReceived) || (xhr.readyState === xhrStatus.loading)) {
+        if (xhr.readyState === xhrStatus.headersReceived || xhr.readyState === xhrStatus.loading) {
           setResHeaders();
         } else if (xhr.readyState === xhrStatus.done) {
           setResHeaders();
           handleProgress();
           res.end();
 
-          process.nextTick(() => {
+          process.nextTick(function () {
             req.removeAllListeners();
             res.removeAllListeners();
           });
@@ -131,7 +133,7 @@ const setupRequest = function (protocol) {
       try {
         xhr.open(reqMethod, reqUrl, true);
 
-        for (const header in options.headers) {
+        for (var header in options.headers) {
           if (options.headers.hasOwnProperty(header)) {
             xhr.setRequestHeader(header, options.headers[header]);
           }

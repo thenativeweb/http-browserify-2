@@ -1,47 +1,45 @@
 'use strict';
 
-var http = require('http');
+const http = require('http');
 
-var bodyParser = require('body-parser'),
-    express = require('express'),
-    jsonLines = require('json-lines'),
-    processEnv = require('processenv');
+const bodyParser = require('body-parser'),
+      express = require('express'),
+      jsonLines = require('json-lines'),
+      processEnv = require('processenv');
 
-var port = processEnv('ZUUL_PORT');
+const port = processEnv('ZUUL_PORT');
 
-var app = express();
+const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send('foobar');
 });
 
-app.post('/', function (req, res) {
+app.post('/', (req, res) => {
   res.send('barfoo');
 });
 
-app.get('/with-querystring', function (req, res) {
+app.get('/with-querystring', (req, res) => {
   res.send(req.query.value);
 });
 
-app.post('/with-body', function (req, res) {
+app.post('/with-body', (req, res) => {
   res.send(req.body);
 });
 
-app.post('/streaming', jsonLines(function (client) {
-  client.once('connect', function () {
-    var i;
-
-    for (i = 0; i < 1000; i++) {
+app.post('/streaming', jsonLines(client => {
+  client.once('connect', () => {
+    for (let i = 0; i < 1000; i++) {
       client.send({ counter: i });
     }
     client.disconnect();
   });
 }));
 
-http.createServer(app).listen(port, function () {
+http.createServer(app).listen(port, () => {
   /* eslint-disable no-console */
-  console.log('Server running on port ' + port);
+  console.log(`Server running on port ${port}`);
   /* eslint-enable no-console */
 });

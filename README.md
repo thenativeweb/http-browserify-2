@@ -4,7 +4,9 @@ http-browserify-2 is an alternative for http-browserify.
 
 ## Installation
 
-    $ npm install http-browserify-2
+```bash
+$ npm install http-browserify-2
+```
 
 ## Quick start
 
@@ -22,12 +24,12 @@ First you need to register http-browserify-2 as a replacement to the `http` and 
 Then you may use it in the same way as the aforementioned modules. Currently, the functions [`request`](https://nodejs.org/api/http.html#http_http_request_options_callback) and [`get`](https://nodejs.org/api/http.html#http_http_get_options_callback) are implemented.
 
 ```javascript
-var req = http.request({
+const req = http.request({
   method: 'GET',
   hostname: 'www.thenativeweb.io',
   port: 80,
   path: '/'
-}, function (res) {
+}, res => {
   // Use the response stream and its properties, such as statusCode.
 });
 
@@ -44,34 +46,48 @@ For further details on how to use these functions see their documentation.
 
 ### Supported browsers
 
-The module was successfully tested with the help of [zuul](https://github.com/defunctzombie/zuul) and [Sauce Labs](https://saucelabs.com/) in the following browsers:
+The module was successfully tested with the help of [zuul](https://github.com/defunctzombie/zuul) and [Sauce Labs](https://saucelabs.com/) in the latest versions of following browsers:
 
-- Chrome 43
-- Firefox 37
-- Safari 8
-- Internet Explorer 10
-- Internet Explorer 11
-- iOS 8.2
+- Chrome 56
+- Firefox 51
+- Safari 10
+- Edge 14
+- Internet Explorer 10, 11
+- iOS 10
 - Android 5.1
 
 ## Running the build
 
-This module can be built using [Grunt](http://gruntjs.com/). This analyses the code. To run Grunt, go to the folder where you have installed http-browserify-2 and run `grunt`. You need to have [grunt-cli](https://github.com/gruntjs/grunt-cli) installed.
+To build this module use [roboter](https://www.npmjs.com/package/roboter).
 
-Additionally, you can run tests in the browser. For this, you need [zuul](https://www.npmjs.com/package/zuul) and Grunt.
+```bash
+$ bot
+```
 
-    $ grunt test-browser
+To run browser tests install [zuul](https://www.npmjs.com/package/zuul) globally.
 
-If you want to run the integration tests on multiple browsers, use the `test-browsers` task.
+```bash
+$ npm install -g zuul
+```
 
-    $ grunt test-browsers
+Then, run browser tests locally.
+
+```bash
+$ bot test-browser
+```
+
+To run the browser tests on multiple browsers, use the `test-browsers` task.
+
+```bash
+$ bot test-browsers
+```
 
 Please note that for this you need a [Sauce Labs](https://saucelabs.com/) account. Additionally, you need to [configure zuul](https://github.com/defunctzombie/zuul/wiki/Cloud-testing) to be able to access the account automatically.
 
 ## License
 
 The MIT License (MIT)
-Copyright (c) 2015 the native web.
+Copyright (c) 2015-2017 the native web.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

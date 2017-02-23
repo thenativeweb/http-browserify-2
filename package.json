@@ -18,16 +18,15 @@
   ],
   "main": "http.js",
   "dependencies": {
-    "builtin-status-codes": "1.0.0"
+    "builtin-status-codes": "3.0.0"
   },
   "devDependencies": {
-    "assertthat": "0.6.0",
-    "body-parser": "1.13.1",
-    "express": "4.13.0",
-    "grunt": "0.4.5",
-    "json-lines": "0.3.0",
-    "processenv": "0.1.0",
-    "tourism": "0.20.1"
+    "body-parser": "1.16.1",
+    "express": "4.14.1",
+    "json-lines": "0.4.3",
+    "processenv": "0.1.1",
+    "roboter": "0.14.6",
+    "roboter-server": "0.14.6"
   },
   "repository": {
     "type": "git",
