@@ -31,6 +31,8 @@ var setupRequest = function setupRequest(protocol) {
   };
 
   http.request = function (options, callback) {
+    var hasErrored = false;
+
     var reqMethod = void 0,
         reqUrl = void 0;
 
@@ -112,7 +114,21 @@ var setupRequest = function setupRequest(protocol) {
       }
 
       xhr.onerror = function (err) {
+        if (hasErrored) {
+          return;
+        }
+        hasErrored = true;
+
         req.emit('error', err);
+      };
+
+      xhr.ontimeout = function () {
+        if (hasErrored) {
+          return;
+        }
+        hasErrored = true;
+
+        req.emit('error', new Error('Request time-out.'));
       };
 
       xhr.onreadystatechange = function () {
@@ -142,6 +158,11 @@ var setupRequest = function setupRequest(protocol) {
         xhr.withCredentials = false;
         xhr.send(reqData);
       } catch (err) {
+        if (hasErrored) {
+          return;
+        }
+        hasErrored = true;
+
         req.emit('error', err);
       }
     });
